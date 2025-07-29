@@ -1,4 +1,8 @@
+
+import User from "../models/User.mjs";
+
 // POST /api/users
+
 exports.createUser = async (req, res) => {
     const { name, email, password, role } = req.body;
     try {

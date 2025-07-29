@@ -3,8 +3,8 @@ import {
   reportMaintenance,
   getAllMaintenanceRequests,
   updateMaintenanceStatus,
-} from '../controllers/maintenanceController.js';
-import { protect, restrictTo } from '../middleware/authMiddleware.js';
+} from '../controllers/maintenanceController.mjs';
+import { protect, restrictTo } from '../middleware/authMiddleware.mjs';
 
 const router = express.Router();
 

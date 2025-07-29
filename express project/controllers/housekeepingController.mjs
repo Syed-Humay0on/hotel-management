@@ -1,5 +1,5 @@
-import CleaningTask from '../models/CleaningTask.js';
-import Room from '../models/Room.js';
+import CleaningTask from '../models/CleaningTask.mjs';
+import Room from '../models/Room.mjs';
 
 // Create/schedule cleaning task
 export const scheduleCleaning = async (req, res) => {

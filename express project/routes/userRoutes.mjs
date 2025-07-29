@@ -1,7 +1,7 @@
 import { Router } from 'express';
 const router = Router();
-import { protect, restrictTo } from '../middleware/authMiddleware';
-import { getAllUsers, getUserById, updateUser, deactivateUser, createUser } from '../controllers/userController';
+import { protect, restrictTo } from '../middleware/authMiddleware.mjs';
+import { getAllUsers, getUserById, updateUser, deactivateUser, createUser } from '../controllers/userController.mjs';
 
 // Admin-only route (example)
 router.get('/admin-data', protect, restrictTo('admin'), (req, res) => {

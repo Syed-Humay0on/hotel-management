@@ -1,4 +1,4 @@
-import MaintenanceRequest from '../models/MaintenanceRequest.js';
+import MaintenanceRequest from '../models/MaintenanceRequest.mjs';
 
 // Report maintenance issue
 export const reportMaintenance = async (req, res) => {

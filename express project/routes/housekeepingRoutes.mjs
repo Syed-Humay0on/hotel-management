@@ -4,8 +4,8 @@ import {
   getAllCleaningTasks,
   markCleaningCompleted,
   getRoomStatuses,
-} from '../controllers/housekeepingController.js';
-import { protect, restrictTo } from '../middleware/authMiddleware.js';
+} from '../controllers/housekeepingController.mjs';
+import { protect, restrictTo } from '../middleware/authMiddleware.mjs';
 
 const router = express.Router();
 

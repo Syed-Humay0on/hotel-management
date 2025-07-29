@@ -1,5 +1,5 @@
 import { verify } from 'jsonwebtoken';
-import { findById } from '../models/User';
+import { findById } from '../models/User.mjs';
 
 export async function protect(req, res, next) {
   let token = req.cookies.token;

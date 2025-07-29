@@ -6,8 +6,8 @@ import {
   updateRoom,
   bookRoom,
   updateRoomStatus,
-} from '../controllers/roomController.js';
-import { protect, restrictTo } from '../middleware/authMiddleware.js';
+} from '../controllers/roomController.mjs';
+import { protect, restrictTo } from '../middleware/authMiddleware.mjs';
 
 const router = express.Router();
 

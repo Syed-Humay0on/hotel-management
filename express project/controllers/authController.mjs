@@ -1,5 +1,5 @@
-import { findOne, create } from '../models/User';
-import generateToken from '../utils/generateToken';
+import { findOne, create } from '../models/User.mjs';
+import generateToken from '../utils/generateToken.mjs';
 
 // POST /api/auth/register
 export async function registerUser(req, res) {

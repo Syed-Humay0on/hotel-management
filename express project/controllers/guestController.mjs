@@ -1,3 +1,8 @@
+import Guest from "..models/Guest.mjs"
+
+
+
+
 // POST /api/guests
 exports.createGuest = async (req, res) => {
     const { name, email, phone, preferences, address } = req.body;
