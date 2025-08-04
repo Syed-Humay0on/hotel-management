@@ -1,5 +1,6 @@
-import { verify } from 'jsonwebtoken';
-import { findById } from '../models/User.mjs';
+import jwt from 'jsonwebtoken';
+const { verify } = jwt;
+import  User  from '../models/User.mjs';
 
 export async function protect(req, res, next) {
   let token = req.cookies.token;
@@ -10,7 +11,7 @@ export async function protect(req, res, next) {
 
   try {
     const decoded = verify(token, process.env.JWT_SECRET);
-    req.user = await findById(decoded.id).select('-password');
+    req.user = await User.findById(decoded.id).select('-password');
     next();
   } catch (err) {
     res.status(401).json({ message: 'Invalid token' });
