@@ -2,6 +2,8 @@ import express, { json } from 'express';
 import { config } from 'dotenv';
 import cookieParser from 'cookie-parser';
 import connectDB from './config/db.mjs';
+import errorHandler from './middleware/errorMiddleware.mjs'
+
 import userRoutes from './routes/userRoutes.mjs';
 import guestRoutes from './routes/guestRoutes.mjs';
 import housekeepingRoutes from './routes/housekeepingRoutes.mjs';
@@ -11,8 +13,7 @@ import feedbackRoutes from './routes/feedbackRoutes.mjs';
 import serviceRoutes from './routes/serviceRoutes.mjs';
 import settingsRoutes from './routes/settingsRoutes.mjs';
 import notificationRoutes from './routes/notificationRoutes.mjs';
-
-
+import authRoutes from './routes/authRoutes.mjs';
 
 config();
 connectDB();
@@ -24,7 +25,7 @@ app.use(json());
 // Routes
 app.use('/api/users', userRoutes);
 app.use('/api/guests', guestRoutes);
-app.use('/api/auth', require('./routes/authRoutes'));
+app.use('/api/auth', authRoutes);
 app.use('/api/housekeeping', housekeepingRoutes);
 app.use('/api/maintenance', maintenanceRoutes);
 app.use('/api/reports', reportRoutes);
