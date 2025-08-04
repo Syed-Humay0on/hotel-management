@@ -1,9 +1,11 @@
 import { Router } from 'express';
 const router = Router();
 import { registerUser, loginUser, logoutUser } from '../controllers/authController.mjs';
+import { validate } from '../middleware/validateRequest.mjs';
+import { registerSchema, loginSchema } from '../validators/authValidator.mjs';
 
-router.post('/register', registerUser);  // Only admin can access this route after auth setup
-router.post('/login', loginUser);
+router.post('/register', validate(registerSchema), registerUser);
+router.post('/login', validate(loginSchema), loginUser);
 router.post('/logout', logoutUser);
 
 export default router;
