@@ -2,10 +2,10 @@ import express, { json } from 'express';
 import { config } from 'dotenv';
 import cookieParser from 'cookie-parser';
 import connectDB from './config/db.mjs';
-import errorHandler from './middleware/errorMiddleware.mjs'
+// import errorHandler from './middleware/errorMiddleware.mjs'
 
 import userRoutes from './routes/userRoutes.mjs';
-import guestRoutes from './routes/guestRoutes.mjs';
+// import guestRoutes from './routes/guestRoutes.mjs';
 import housekeepingRoutes from './routes/housekeepingRoutes.mjs';
 import maintenanceRoutes from './routes/maintenanceRoutes.mjs';
 import reportRoutes from './routes/reportRoutes.mjs';
@@ -24,7 +24,7 @@ app.use(json());
 
 // Routes
 app.use('/api/users', userRoutes);
-app.use('/api/guests', guestRoutes);
+// app.use('/api/guests', guestRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/housekeeping', housekeepingRoutes);
 app.use('/api/maintenance', maintenanceRoutes);
@@ -36,7 +36,7 @@ app.use('/api/notifications', notificationRoutes);
 
 
 // Error handling
-app.use(errorHandler);
+// app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
