@@ -1,15 +1,20 @@
 import User from "../models/User.mjs";
+import { hash } from "bcryptjs";
 
 // ✅ POST /api/users
 export const createUser = async (req, res) => {
   const { name, email, password, role } = req.body;
   try {
     const exists = await User.findOne({ email });
-    if (exists) return res.status(400).json({ message: 'Email already in use' });
+    if (exists) return res.status(400).json({ message: "Email already in use" });
 
-    const user = new User({ name, email, password, role });
+    // Hash the password before saving
+    const hashedPassword = await hash(password, 10);
+
+    const user = new User({ name, email, password: hashedPassword, role });
     await user.save();
-    res.status(201).json({ message: 'User created successfully', user });
+
+    res.status(201).json({ message: "User created successfully", user });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
