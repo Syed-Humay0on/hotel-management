@@ -15,7 +15,7 @@ import settingsRoutes from './routes/settingsRoutes.mjs';
 import notificationRoutes from './routes/notificationRoutes.mjs';
 import authRoutes from './routes/authRoutes.mjs';
 
-config();
+config({ path: './.env', override: true });   // 👈 force it to use THIS file
 connectDB();
 
 const app = express();
