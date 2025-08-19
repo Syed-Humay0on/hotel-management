@@ -1,31 +1,34 @@
-import React from "react";
-import { Carousel } from "flowbite-react";
+import React, { useEffect, useState } from "react";
+
+const images = [
+  "https://w0.peakpx.com/wallpaper/553/100/HD-wallpaper-luxury-design-house-design-stairs-beautiful-peace-livingroom-furniture-nice-summer-room-white-wood-luxury.jpg",
+  "https://w0.peakpx.com/wallpaper/616/740/HD-wallpaper-luxury-living-room-luxurious-living-room-home-theater-living-room.jpg",
+  "https://w0.peakpx.com/wallpaper/717/803/HD-wallpaper-stylish-design-and-interior-living-room-country-house-luxury-house-stylish-interior-design.jpg"
+];
 
 export default function BannerCarousel() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
-      <Carousel>
+    <div className="relative w-full h-screen overflow-hidden">
+      {images.map((image, index) => (
         <img
-          src="https://images.unsplash.com/photo-1578898889913-5f79bff857b3?auto=format&fit=crop&w=1470&q=80"
-          alt="Hotel room 1"
-          className="object-cover"
+          key={index}
+          src={image}
+          alt={`Slide ${index + 1}`}
+          className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ${
+            index === currentIndex ? "opacity-100" : "opacity-0"
+          }`}
         />
-        <img
-          src="https://images.unsplash.com/photo-1618222314252-25b45000f8d3?auto=format&fit=crop&w=1470&q=80"
-          alt="Hotel room 2"
-          className="object-cover"
-        />
-        <img
-          src="https://images.unsplash.com/photo-1600180758895-f9b0c3d0c915?auto=format&fit=crop&w=1470&q=80"
-          alt="Hotel room 3"
-          className="object-cover"
-        />
-        <img
-          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1470&q=80"
-          alt="Hotel room 4"
-          className="object-cover"
-        />
-      </Carousel>
+      ))}
     </div>
   );
 }
