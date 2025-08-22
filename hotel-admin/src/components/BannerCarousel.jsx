@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 
 const images = [
-  "https://w0.peakpx.com/wallpaper/76/628/HD-wallpaper-living-room-loft-style-gray-concrete-wall-in-the-living-room-modern-interior-design-gray-large-sofa-stylish-interior-design.jpg",
-  "https://w0.peakpx.com/wallpaper/852/579/HD-wallpaper-living-room-loft-style-stylish-modern-interior-fireplace-in-the-living-room-modern-interior-design.jpg",
-  "https://w0.peakpx.com/wallpaper/572/110/HD-wallpaper-living-room-kitchen-dinning-room-room-design-modern-stylish-interior-design-dining-table-modern-interior-design.jpg",
+  "https://img.freepik.com/premium-photo/polar-bear-front-city-arctic-snowcovered-houses-high-ice-mountains_864559-7112.jpg",
+  "https://img.freepik.com/premium-photo/dark-room-with-bed-lamp-lamp-window-with-words-hotel-it_890746-36.jpg",
+  "https://img.freepik.com/premium-photo/bedroom-with-two-beds-lamp-wall_889227-9371.jpg",
 ];
 
 export default function BannerCarouselWithJumbotron() {
@@ -31,21 +31,21 @@ export default function BannerCarouselWithJumbotron() {
         />
       ))}
 
-      {/* Overlay Jumbotron */}
-      <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/90 flex items-center justify-center">
         <div className="px-6 mx-auto max-w-3xl text-center">
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-tight text-white md:text-5xl lg:text-6xl">
             Experience Luxury & Comfort
           </h1>
-          <p className="mb-8 text-lg font-light text-gray-200 md:text-xl">
+          <p className="mb-8 text-lg font-light text-gray-300 md:text-xl">
             Book your perfect stay with us — elegant rooms, world-class service,
             and unforgettable experiences await.
           </p>
           <div className="flex flex-col sm:flex-row sm:justify-center gap-4">
-            {/* Primary button */}
+            {/* Primary muted button */}
             <a
               href="#"
-              className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-indigo-600 rounded-full shadow-md hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-400 transition"
+              className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-gray-900 bg-gray-200 rounded-full shadow-md hover:bg-gray-300 transition"
             >
               Book Now
               <svg
@@ -63,10 +63,10 @@ export default function BannerCarouselWithJumbotron() {
                 />
               </svg>
             </a>
-            {/* Secondary button */}
+            {/* Secondary outlined muted button */}
             <a
               href="#"
-              className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white border border-white rounded-full hover:bg-white hover:text-gray-900 transition"
+              className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-gray-200 border border-gray-300 rounded-full hover:bg-gray-100 hover:text-gray-900 transition"
             >
               View Rooms
             </a>
@@ -76,4 +76,3 @@ export default function BannerCarouselWithJumbotron() {
     </div>
   );
 }
-
