@@ -2,6 +2,7 @@ import express, { json } from 'express';
 import { config } from 'dotenv';
 import cookieParser from 'cookie-parser';
 import connectDB from './config/db.mjs';
+import cors from 'cors';
 // import errorHandler from './middleware/errorMiddleware.mjs'
 
 import userRoutes from './routes/userRoutes.mjs';
@@ -21,6 +22,10 @@ connectDB();
 const app = express();
 app.use(cookieParser());
 app.use(json());
+app.use(cors({
+  origin: "http://localhost:5173", // your React dev server
+  credentials: true,
+}));
 
 // Routes
 app.use('/api/users', userRoutes);

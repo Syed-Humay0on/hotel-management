@@ -42,8 +42,10 @@ export async function loginUser(req, res) {
     const token = generateToken(user._id);
     res.cookie('token', token, {
       httpOnly: true,
-      secure: true,
-      sameSite: 'strict',
+      // secure: true,
+      secure: process.env.NODE_ENV === 'production',
+      // sameSite: 'strict',
+      sameSite: 'lax', // ✅ allow cross-origin dev requests
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 

@@ -8,39 +8,45 @@ import HeroSection from "./HeroSection.jsx"; // 👈 import hero
 import Cards from "./Cards.jsx";
 import Gallery from "./Gallery.jsx";
 import AboutUs from "./AboutUs.jsx";
+import FeedbackForm from "./FeedbackForm.jsx";
+import Testimonials from "./Testimonials.jsx";
 
 export default function ServicesTabs() {
-  const [activeTab, setActiveTab] = useState(0); // default to first tab
+  const [activeTab, setActiveTab] = useState(0);
+  const [reviews, setReviews] = useState([]);
+
+  const handleNewReview = (review) => {
+    setReviews((prev) => [review, ...prev]);
+  };
 
   return (
     <div className="pt-28 px-4">
       <Tabs
         aria-label="Service tabs"
         variant="underline"
-        onActiveTabChange={(index) => setActiveTab(index)} // index, not title
+        onActiveTabChange={(index) => setActiveTab(index)}
       >
-        {/* <TabItem title="Profile" icon={HiUserCircle} /> */}
         <TabItem title="Home" icon={MdDashboard} />
         <TabItem title="Gallery" icon={HiAdjustments} />
         <TabItem title="Contacts" icon={HiClipboardList} />
+        <TabItem title="Support" icon={HiUserCircle} />
       </Tabs>
 
       <div className="mt-4">
-        {/* {activeTab === 0 && <div>Profile content goes here</div>} */}
-
         {activeTab === 0 && (
           <>
-            <BannerCarousel /> {/* Carousel */}
-            <HeroSection />   {/* Hero Section below */}
+            <BannerCarousel />
+            <HeroSection />
             <AboutUs />
             <Cards />
+            <Testimonials reviews={reviews} />
           </>
         )}
 
         {activeTab === 1 && <Gallery />}
-        {activeTab === 2 && <ContactForm />} {/* Contact Form */}
+        {activeTab === 2 && <ContactForm />}
+        {activeTab === 3 && <FeedbackForm onNewReview={handleNewReview} />}
       </div>
     </div>
   );
 }
-
