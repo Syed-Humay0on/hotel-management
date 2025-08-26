@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import AdminNavbar from "../components/admin/AdminNavbar";
 import AdminSidebar from "../components/admin/AdminSidebar";
 import BookingsTable from "../components/admin/AdminBooking";
@@ -9,11 +8,8 @@ export default function AdminDashboard() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if admin is logged in using localStorage or backend
     const isLoggedIn = localStorage.getItem("adminLoggedIn");
-    if (!isLoggedIn) {
-      navigate("/admin/login");
-    }
+    if (!isLoggedIn) navigate("/admin/login", { replace: true });
   }, [navigate]);
 
   return (

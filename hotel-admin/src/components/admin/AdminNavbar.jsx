@@ -4,7 +4,12 @@ import axios from "axios";
 
 export default function AdminNavbar() {
   const handleLogout = async () => {
-    await axios.post("http://localhost:5000/api/auth/logout", {}, { withCredentials: true });
+    try {
+      await axios.post("http://localhost:5000/api/auth/logout", {}, { withCredentials: true });
+    } catch (err) {
+      console.error("Logout failed", err);
+    }
+    localStorage.removeItem("adminLoggedIn"); // remove login flag
     window.location.href = "/admin/login"; // redirect after logout
   };
 
@@ -24,4 +29,3 @@ export default function AdminNavbar() {
     </nav>
   );
 }
-
