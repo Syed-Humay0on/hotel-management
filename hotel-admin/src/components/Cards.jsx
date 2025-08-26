@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import axios from "axios";
 import { Button, Label, Modal, ModalBody, ModalHeader, TextInput, Textarea } from "flowbite-react";
 import { FaUserFriends, FaRulerCombined, FaEye } from "react-icons/fa";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -117,10 +118,24 @@ export default function RoomCardsWithModal() {
               <Formik
                 initialValues={{ fullName: "", email: "", checkin: "", checkout: "", notes: "" }}
                 validationSchema={BookingSchema}
-                onSubmit={(values, { resetForm }) => {
-                  alert(`Booking confirmed for ${selectedRoom.name}\n\n${JSON.stringify(values, null, 2)}`);
-                  resetForm();
-                  handleCloseModal();
+                onSubmit={async (values, { resetForm }) => {
+                  try {
+                    const bookingData = {
+                      ...values,
+                      roomName: selectedRoom.name,
+                      roomPrice: selectedRoom.price,
+                    };
+
+                    // 👇 send to backend
+                    await axios.post("http://localhost:5000/api/bookings", bookingData);
+
+                    alert(`Booking confirmed for ${selectedRoom.name}`);
+                    resetForm();
+                    handleCloseModal();
+                  } catch (err) {
+                    console.error("Booking failed:", err);
+                    alert("Booking failed, please try again.");
+                  }
                 }}
               >
                 {({ errors, touched }) => (

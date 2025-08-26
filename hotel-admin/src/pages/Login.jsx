@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { Button, Label, TextInput } from "flowbite-react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+// import axios from "axios";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -12,31 +12,30 @@ export default function Login() {
   const navigate = useNavigate();
 
   // ✅ Set axios defaults to include cookies
-  axios.defaults.withCredentials = true;
-  axios.defaults.baseURL = "http://localhost:5000";
+  // axios.defaults.withCredentials = true;
+  // axios.defaults.baseURL = "http://localhost:5000";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    navigate("/admin/dashboard");
-    // try {
-    //   const res = await axios.post(
-    //     "/api/auth/login",
-    //     { email, password },
-    //     { withCredentials: true }
-    //   );
-    //
-    //   console.log("Login success:", res.data);
-    //   setError("");
-    //
-    //   // ✅ Proper React Router redirect
-    //   navigate("/admin/dashboard");
-    // } catch (err) {
-    //   console.error(err);
-    //   setError(
-    //     err.response?.data?.message ||
-    //       "Login failed. Please check your credentials."
-    //   );
-    // }
+    try {
+      // Commenting out login call
+      /*
+      const res = await axios.post(
+        "/api/auth/login",
+        { email, password },
+        { withCredentials: true }
+      );
+      console.log("Login success:", res.data);
+      setError("");
+      */
+      // Just navigate to dashboard
+      navigate("/admin/dashboard");
+    } catch (err) {
+      // setError(
+      //   err.response?.data?.message ||
+      //     "Login failed. Please check your credentials."
+      // );
+    }
   };
 
   return (

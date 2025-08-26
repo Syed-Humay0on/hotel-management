@@ -7,6 +7,7 @@ import cors from 'cors';
 
 import userRoutes from './routes/userRoutes.mjs';
 // import guestRoutes from './routes/guestRoutes.mjs';
+import bookingsRoutes from "./routes/bookings.js";
 import housekeepingRoutes from './routes/housekeepingRoutes.mjs';
 import maintenanceRoutes from './routes/maintenanceRoutes.mjs';
 import reportRoutes from './routes/reportRoutes.mjs';
@@ -32,6 +33,7 @@ app.use(cors({
 app.use('/api/users', userRoutes);
 // app.use('/api/guests', guestRoutes);
 app.use('/api/auth', authRoutes);
+app.use("/api/bookings", bookingsRoutes);
 app.use('/api/housekeeping', housekeepingRoutes);
 app.use('/api/maintenance', maintenanceRoutes);
 app.use('/api/reports', reportRoutes);
