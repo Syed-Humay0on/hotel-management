@@ -14,19 +14,22 @@ const images = [
   "https://w0.peakpx.com/wallpaper/435/59/HD-wallpaper-stylish-interior-design-loft-style-living-room-white-marble-wall-in-the-living-room-fireplace-living-room-project-modern-interior-design.jpg",
   "https://w0.peakpx.com/wallpaper/20/397/HD-wallpaper-loft-stylish-interior-country-house-dining-room-living-room-modern-interior-design-loft-style-stylish-design.jpg",
   "https://w0.peakpx.com/wallpaper/591/473/HD-wallpaper-stylish-design-interior-loft-style-living-room-dining-room-concrete-walls-in-the-living-room-dark-wood-and-concrete.jpg",
-"https://w0.peakpx.com/wallpaper/309/716/HD-wallpaper-stylish-apartments-modern-interior-design-living-room-loft-style-gray-concrete-ceiling-gray-color-in-the-interior.jpg",
+  "https://w0.peakpx.com/wallpaper/309/716/HD-wallpaper-stylish-apartments-modern-interior-design-living-room-loft-style-gray-concrete-ceiling-gray-color-in-the-interior.jpg",
 ];
 
 export default function Gallery() {
   return (
-    <section className="bg-white dark:bg-gray-900 py-8 lg:py-16">
+    <section className="bg-gray-900 py-12">
       <div className="max-w-screen-xl mx-auto px-4">
-        <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-8 text-center">
+        <h2 className="text-3xl font-extrabold text-white mb-8 text-center">
           LuxuryStay Collection
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {images.map((src, index) => (
-            <div key={index} className="overflow-hidden rounded-lg shadow-md">
+            <div
+              key={index}
+              className="overflow-hidden rounded-lg shadow-lg border border-gray-800 bg-gray-800"
+            >
               <img
                 src={src}
                 alt={`Hotel room ${index + 1}`}
@@ -39,4 +42,3 @@ export default function Gallery() {
     </section>
   );
 }
-

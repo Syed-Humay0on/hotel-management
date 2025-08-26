@@ -61,18 +61,18 @@ export default function RoomCardsWithModal() {
   });
 
   return (
-    <section className="bg-gray-100 dark:bg-gray-900 py-12">
+    <section className="bg-gray-900 py-12">
       {/* Room Cards */}
       <div className="max-w-screen-xl mx-auto px-4 grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {rooms.map((room, idx) => (
-          <div key={idx} className="flex flex-col bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+          <div key={idx} className="flex flex-col bg-gray-800 border border-gray-700 rounded-lg shadow-lg overflow-hidden">
             <div className="w-full h-64 overflow-hidden">
               <img src={room.img} alt={room.name} className="w-full h-full object-cover" />
             </div>
             <div className="p-5 flex flex-col flex-1 justify-between">
-              <h5 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{room.name}</h5>
-              <p className="text-gray-700 dark:text-gray-400 mb-3">{room.desc}</p>
-              <ul className="text-gray-600 dark:text-gray-300 mb-3 space-y-1">
+              <h5 className="text-2xl font-bold text-white mb-2">{room.name}</h5>
+              <p className="text-gray-400 mb-3">{room.desc}</p>
+              <ul className="text-gray-300 mb-3 space-y-1">
                 <li className="flex items-center gap-2"><FaUserFriends /> {room.capacity}</li>
                 <li className="flex items-center gap-2"><FaRulerCombined /> {room.size}</li>
                 <li className="flex items-center gap-2"><FaEye /> {room.view}</li>
@@ -111,7 +111,7 @@ export default function RoomCardsWithModal() {
                 alt={selectedRoom.name}
                 className="w-full h-48 object-cover rounded-lg mb-4"
               />
-              <h3 className="text-xl font-medium text-gray-900 dark:text-white">
+              <h3 className="text-xl font-medium text-white">
                 Booking: {selectedRoom.name}
               </h3>
 

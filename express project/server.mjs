@@ -7,7 +7,7 @@ import cors from 'cors';
 
 import userRoutes from './routes/userRoutes.mjs';
 // import guestRoutes from './routes/guestRoutes.mjs';
-import bookingsRoutes from "./routes/bookings.js";
+import bookingsRoutes from "./routes/Booking.mjs";
 import housekeepingRoutes from './routes/housekeepingRoutes.mjs';
 import maintenanceRoutes from './routes/maintenanceRoutes.mjs';
 import reportRoutes from './routes/reportRoutes.mjs';

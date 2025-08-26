@@ -22,7 +22,7 @@ export default function BookingsTable() {
   return (
     <div className="overflow-x-auto mt-6">
       <Table hoverable>
-        <TableHead>
+        <TableHead className="bg-gray-700 text-gray-300">
           <TableRow>
             <TableHeadCell>Name</TableHeadCell>
             <TableHeadCell>Email</TableHeadCell>
@@ -32,14 +32,14 @@ export default function BookingsTable() {
             <TableHeadCell>Actions</TableHeadCell>
           </TableRow>
         </TableHead>
-        <TableBody className="divide-y">
+        <TableBody className="divide-y divide-gray-700">
           {bookings.map((b) => (
-            <TableRow key={b._id} className="bg-white dark:bg-gray-800">
-              <TableCell>{b.fullName}</TableCell>
-              <TableCell>{b.email}</TableCell>
-              <TableCell>{b.roomName} ({b.roomPrice})</TableCell>
-              <TableCell>{new Date(b.checkin).toLocaleDateString()}</TableCell>
-              <TableCell>{new Date(b.checkout).toLocaleDateString()}</TableCell>
+            <TableRow key={b._id} className="bg-gray-800 border-gray-700">
+              <TableCell className="text-gray-200">{b.fullName}</TableCell>
+              <TableCell className="text-gray-200">{b.email}</TableCell>
+              <TableCell className="text-gray-200">{b.roomName} ({b.roomPrice})</TableCell>
+              <TableCell className="text-gray-200">{new Date(b.checkin).toLocaleDateString()}</TableCell>
+              <TableCell className="text-gray-200">{new Date(b.checkout).toLocaleDateString()}</TableCell>
               <TableCell>
                 <Button size="xs" color="failure" onClick={() => handleDelete(b._id)}>
                   Delete
@@ -52,4 +52,3 @@ export default function BookingsTable() {
     </div>
   );
 }
-

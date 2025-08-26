@@ -24,12 +24,17 @@ export default function FeedbackForm({ onNewReview }) {
   };
 
   return (
-    <div className="max-w-xl mx-auto mt-16 p-8 border rounded-lg">
-      <h2 className="text-2xl font-semibold text-gray-900 mb-2">Feedback</h2>
-      <p className="mb-6 text-gray-600">
-        Share your feedback about our rooms or services!
+    <div className="max-w-xl mx-auto mt-16 mb-20 p-8 border rounded-lg shadow-lg bg-white dark:bg-gray-900">
+      {/* Heading */}
+      <h2 className="text-3xl font-bold text-gray-900 dark:text-white text-center mb-2">
+        We Value Your Feedback
+      </h2>
+      <p className="mb-8 text-center text-gray-600 dark:text-gray-400">
+        Share your experience with us — your thoughts help us improve our services.
       </p>
-      <form onSubmit={handleSubmit} className="space-y-4">
+
+      {/* Form */}
+      <form onSubmit={handleSubmit} className="space-y-5">
         <div>
           <Label htmlFor="name">Name</Label>
           <TextInput
@@ -71,13 +76,15 @@ export default function FeedbackForm({ onNewReview }) {
             {[1, 2, 3, 4, 5].map((i) => (
               <FaStar
                 key={i}
-                className={`cursor-pointer ${i <= form.rating ? "text-yellow-300" : "text-gray-300"}`}
+                className={`cursor-pointer ${
+                  i <= form.rating ? "text-yellow-300" : "text-gray-300"
+                }`}
                 onClick={() => setForm((prev) => ({ ...prev, rating: i }))}
               />
             ))}
           </div>
         </div>
-        <Button type="submit" className="mt-4">
+        <Button type="submit" className="mt-4 w-full sm:w-auto">
           Submit Feedback
         </Button>
       </form>

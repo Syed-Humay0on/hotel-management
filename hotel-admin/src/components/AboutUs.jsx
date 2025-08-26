@@ -3,10 +3,10 @@ import React from "react";
 
 export default function AboutUs() {
   return (
-    <section className="bg-white dark:bg-gray-900">
+    <section className="bg-gray-900">
       <div className="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
-        <div className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
-          <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+        <div className="font-light text-gray-400 sm:text-lg">
+          <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-white">
             About us
           </h2>
           <p className="mb-4">
@@ -14,7 +14,6 @@ export default function AboutUs() {
             luxurious accommodations. With a network of hotels in various locations, LuxuryStay
             aims to revolutionize its operational efficiency by implementing a cutting-edge Hotel
             Management System (HMS).
-
           </p>
           <p>
             LuxuryStay envisions a modern, scalable, and user-friendly Hotel Management
@@ -39,4 +38,3 @@ export default function AboutUs() {
     </section>
   );
 }
-
