@@ -21,7 +21,8 @@ connectDB();
 
 const app = express();
 app.use(cookieParser());
-app.use(express.json());
+app.use('/api/auth', express.json()); // only for auth routes
+app.use('/api/users', express.json()); // for other routes that expect JSON
 app.use(cors({
   origin: "http://localhost:5173", // your React dev server
   credentials: true,

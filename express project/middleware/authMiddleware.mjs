@@ -4,6 +4,7 @@ import User from "../models/User.mjs";
 // Protect middleware – only used for ADMIN/dashboard APIs
 export async function protect(req, res, next) {
   const token = req.cookies?.token;
+  console.log("Token received:", token); // <--- add this
 
   if (!token) {
     // Instead of blocking everything, just return 401 for dashboard/admin routes
@@ -12,6 +13,7 @@ export async function protect(req, res, next) {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    console.log("Decoded token:", decoded); // <--- add this
 
     req.user = await User.findById(decoded.id).select("-password");
 
