@@ -3,11 +3,13 @@
 import { useState } from "react";
 import { Button, Label, TextInput } from "flowbite-react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   // ✅ Set axios defaults to include cookies
   axios.defaults.withCredentials = true;
@@ -16,17 +18,22 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/api/auth/login", { email, password }, { withCredentials: true } // ✅ ensures cookies are sent/received
+      const res = await axios.post(
+        "/api/auth/login",
+        { email, password },
+        { withCredentials: true }
       );
+
       console.log("Login success:", res.data);
       setError("");
 
-      // Redirect to admin dashboard
-      window.location.href = "/admin/dashboard"; // adjust path if needed
+      // ✅ Proper React Router redirect
+      navigate("/admin/dashboard");
     } catch (err) {
       console.error(err);
       setError(
-        err.response?.data?.message || "Login failed. Please check your credentials."
+        err.response?.data?.message ||
+          "Login failed. Please check your credentials."
       );
     }
   };
@@ -40,7 +47,9 @@ export default function Login() {
         {error && <p className="text-red-500 mb-4">{error}</p>}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <Label htmlFor="email" className="text-gray-200">Email</Label>
+            <Label htmlFor="email" className="text-gray-200">
+              Email
+            </Label>
             <TextInput
               id="email"
               type="email"
@@ -52,7 +61,9 @@ export default function Login() {
             />
           </div>
           <div>
-            <Label htmlFor="password" className="text-gray-200">Password</Label>
+            <Label htmlFor="password" className="text-gray-200">
+              Password
+            </Label>
             <TextInput
               id="password"
               type="password"
