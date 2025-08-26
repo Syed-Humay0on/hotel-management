@@ -3,38 +3,41 @@
 import { useState } from "react";
 import { Button, Label, TextInput } from "flowbite-react";
 import { useNavigate } from "react-router-dom";
-// import axios from "axios";
+import axios from "axios";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [error, setError] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  // ✅ Set axios defaults to include cookies
-  // axios.defaults.withCredentials = true;
-  // axios.defaults.baseURL = "http://localhost:5000";
+  // ✅ Axios defaults
+  axios.defaults.withCredentials = true;
+  axios.defaults.baseURL = "http://localhost:5000";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Commenting out login call
-      /*
       const res = await axios.post(
         "/api/auth/login",
         { email, password },
         { withCredentials: true }
       );
+
       console.log("Login success:", res.data);
+
+      // ✅ Set logged-in flag
+      localStorage.setItem("adminLoggedIn", true);
+
+      // ✅ Navigate to dashboard, disable back button
+      navigate("/admin/dashboard", { replace: true });
+
       setError("");
-      */
-      // Just navigate to dashboard
-      navigate("/admin/dashboard");
     } catch (err) {
-      // setError(
-      //   err.response?.data?.message ||
-      //     "Login failed. Please check your credentials."
-      // );
+      setError(
+        err.response?.data?.message ||
+          "Login failed. Please check your credentials."
+      );
     }
   };
 
@@ -44,7 +47,9 @@ export default function Login() {
         <h1 className="text-2xl font-bold text-white mb-6 text-center">
           Admin Login
         </h1>
+
         {error && <p className="text-red-500 mb-4">{error}</p>}
+
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <Label htmlFor="email" className="text-gray-200">
@@ -60,6 +65,7 @@ export default function Login() {
               color="dark"
             />
           </div>
+
           <div>
             <Label htmlFor="password" className="text-gray-200">
               Password
@@ -74,6 +80,7 @@ export default function Login() {
               color="dark"
             />
           </div>
+
           <Button type="submit" className="w-full">
             Sign in
           </Button>

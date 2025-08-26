@@ -1,30 +1,20 @@
-import React from "react";
-// import React, { useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
-// import axios from "axios";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import AdminNavbar from "../components/admin/AdminNavbar";
 import AdminSidebar from "../components/admin/AdminSidebar";
-import AdminBooking from "../components/admin/AdminBooking";
 import BookingsTable from "../components/admin/AdminBooking";
 
 export default function AdminDashboard() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // ✅ Comment out auth check
-  /*
   useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        await axios.get("http://localhost:5000/api/auth/me", {
-          withCredentials: true,
-        });
-      } catch (err) {
-        navigate("/admin/login"); // not logged in
-      }
-    };
-    checkAuth();
+    // Check if admin is logged in using localStorage or backend
+    const isLoggedIn = localStorage.getItem("adminLoggedIn");
+    if (!isLoggedIn) {
+      navigate("/admin/login");
+    }
   }, [navigate]);
-  */
 
   return (
     <div className="bg-gray-900 min-h-screen text-white flex flex-col">

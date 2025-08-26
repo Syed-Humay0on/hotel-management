@@ -24,19 +24,21 @@ export default function FeedbackForm({ onNewReview }) {
   };
 
   return (
-    <div className="max-w-xl mx-auto mt-16 mb-20 p-8 border rounded-lg shadow-lg bg-white dark:bg-gray-900">
+    <div className="max-w-xl mx-auto mt-16 mb-32 p-8 border rounded-lg shadow-lg bg-gray-900">
       {/* Heading */}
-      <h2 className="text-3xl font-bold text-gray-900 dark:text-white text-center mb-2">
+      <h2 className="text-3xl font-bold text-center mb-2 text-white">
         We Value Your Feedback
       </h2>
-      <p className="mb-8 text-center text-gray-600 dark:text-gray-400">
+      <p className="mb-8 text-center text-gray-300">
         Share your experience with us — your thoughts help us improve our services.
       </p>
 
       {/* Form */}
       <form onSubmit={handleSubmit} className="space-y-5">
         <div>
-          <Label htmlFor="name">Name</Label>
+          <Label htmlFor="name" className="text-gray-200">
+            Name
+          </Label>
           <TextInput
             id="name"
             name="name"
@@ -44,10 +46,13 @@ export default function FeedbackForm({ onNewReview }) {
             value={form.name}
             onChange={handleChange}
             required
+            className="text-black bg-gray-100 dark:bg-gray-700"
           />
         </div>
         <div>
-          <Label htmlFor="email">Email</Label>
+          <Label htmlFor="email" className="text-gray-200">
+            Email
+          </Label>
           <TextInput
             id="email"
             name="email"
@@ -56,10 +61,13 @@ export default function FeedbackForm({ onNewReview }) {
             value={form.email}
             onChange={handleChange}
             required
+            className="text-black bg-gray-100 dark:bg-gray-700"
           />
         </div>
         <div>
-          <Label htmlFor="message">Message</Label>
+          <Label htmlFor="message" className="text-gray-200">
+            Message
+          </Label>
           <Textarea
             id="message"
             name="message"
@@ -68,23 +76,27 @@ export default function FeedbackForm({ onNewReview }) {
             onChange={handleChange}
             rows={4}
             required
+            className="text-black bg-gray-100 dark:bg-gray-700"
           />
         </div>
         <div>
-          <Label>Rating</Label>
+          <Label className="text-gray-200">Rating</Label>
           <div className="flex space-x-1 mt-1">
             {[1, 2, 3, 4, 5].map((i) => (
               <FaStar
                 key={i}
                 className={`cursor-pointer ${
-                  i <= form.rating ? "text-yellow-300" : "text-gray-300"
+                  i <= form.rating ? "text-yellow-400" : "text-gray-500"
                 }`}
                 onClick={() => setForm((prev) => ({ ...prev, rating: i }))}
               />
             ))}
           </div>
         </div>
-        <Button type="submit" className="mt-4 w-full sm:w-auto">
+        <Button
+          type="submit"
+          className="mt-4 w-full sm:w-auto bg-gray-800 hover:bg-gray-700 text-white"
+        >
           Submit Feedback
         </Button>
       </form>
